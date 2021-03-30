@@ -13,7 +13,7 @@ class MoviesException implements Exception {
         message = "Connection to API server failed due to internet connection";
         break;
       case DioErrorType.RECEIVE_TIMEOUT:
-        message = "Receive timeout in connection with API server";
+        message = "Receive time-out in connection with API server";
         break;
       case DioErrorType.RESPONSE:
         message = _handleError(dioError.response.statusCode);

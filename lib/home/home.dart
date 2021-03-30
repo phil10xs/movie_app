@@ -3,11 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 
-
 import 'package:movieapp/home/movie_service.dart';
 import 'package:movieapp/home/movies_exception.dart';
 
-import '../movies_api.dart';
 import 'movie.dart';
 
 final moviesFutureProvider =
@@ -26,12 +24,7 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: GestureDetector(
-            onTap: () {
-              // ignore: unnecessary_statements
-              MovieAPI.getMovies();
-            },
-            child: Text('Moviiies')),
+        title: Text('Moneyme Movies'),
       ),
       body: watch(moviesFutureProvider).when(
         error: (e, s) {
