@@ -2,12 +2,16 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
+
+
 import 'package:movieapp/home/movie_service.dart';
 import 'package:movieapp/home/movies_exception.dart';
 
+import '../movies_api.dart';
 import 'movie.dart';
 
-final moviesFutureProvider = FutureProvider.autoDispose<List<Movie>>((ref) async {
+final moviesFutureProvider =
+    FutureProvider.autoDispose<List<Movie>>((ref) async {
   ref.maintainState = true;
 
   final movieService = ref.watch(movieServiceProvider);
@@ -22,7 +26,12 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text('Moviiies'),
+        title: GestureDetector(
+            onTap: () {
+              // ignore: unnecessary_statements
+              MovieAPI.getMovies();
+            },
+            child: Text('Moviiies')),
       ),
       body: watch(moviesFutureProvider).when(
         error: (e, s) {

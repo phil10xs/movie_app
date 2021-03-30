@@ -12,7 +12,7 @@ class Movie {
 
   Map<String, dynamic> toMap() {
     return {
-      'title': title,
+      'original_title': title,
       'poster_path': posterPath,
     };
   }
@@ -21,7 +21,7 @@ class Movie {
     if (map == null) return null;
 
     return Movie(
-      title: map['title'],
+      title: map['original_title'],
       posterPath: map['poster_path'],
     );
   }
